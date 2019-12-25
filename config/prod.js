@@ -5,4 +5,4 @@ module.exports = {
     mongoURI:process.env.MONGO_URI,
     cookie_key:process.env.COOKEY_KEY,
     
-}//GH5Xy42Yc75tWthd
+}

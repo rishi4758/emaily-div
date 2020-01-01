@@ -18,6 +18,7 @@ passport.use(
 {clientID: key.googleclientID,
 clientSecret:key.googleclientSecret,
 callbackURL:'/auth/google/callback',
+proxy:true
 
 },
 (Token,refreshToken,profile,done)=>{

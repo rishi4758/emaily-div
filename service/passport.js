@@ -20,6 +20,7 @@ clientSecret:key.googleclientSecret,
 callbackURL:'/auth/google/callback',
 proxy:true
 
+
 },
 (Token,refreshToken,profile,done)=>{
 login.findOne({googleId:profile.id}).then((userExist)=>{

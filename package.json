@@ -5,15 +5,18 @@
   "main": "index.js",
   "engines": {
     "node": "12.14.0",
-    "npm": "6.11.3"
+    "npm": "6.13.4"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^5.0.2",
     "cookie-session": "^1.3.3",
     "express": "^4.17.1",
     "mongoose": "^5.8.1",

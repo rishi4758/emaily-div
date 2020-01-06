@@ -6,3 +6,7 @@ module.exports = {
     cookie_key:process.env.COOKEY_KEY,
     
 }
+
+// 386358226713-h1mt92dbferab544ne7cb1fpmd8lb1oa.apps.googleusercontent.com
+// Ag6C9f98pfVEEAhIK-L_b18R
+// mongodb+srv://rishipro:passwordabc@cluster0-02kha.mongodb.net/test?retryWrites=true&w=majority

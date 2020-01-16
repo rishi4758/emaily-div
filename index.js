@@ -17,8 +17,14 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session())
+require("./models/user");
+require("./models/survey.js");
+require("./service/passport.js");
+
+
 require("./router/billingroutes.js")(app)
 require("./router/oauth.js")(app)
+require("./router/surveyroutes.js")(app)
 if(process.env.NODE_ENV ==='production'){
 // express serveve up production assets
 // like main.js or main.css
@@ -34,7 +40,6 @@ app.get('*',(req,res)=>{
 mongoose.connect(key.mongoURI, {useNewUrlParser: true}).then(
     console.log("connected database")
 );
-require("./models/user");
-require("./service/passport.js");
+
 const port=process.env.PORT || 5004;
 app.listen(port)

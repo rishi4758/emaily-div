@@ -5,4 +5,5 @@ module.exports = function(app) {
     app.use(proxy(['/api', '/api/user'], { target: 'http://localhost:5004' }));
     app.use(proxy(['/api', '/api/logout'], { target: 'http://localhost:5004' }));
     app.use(proxy(['/api', '/api/stripe'], { target: 'http://localhost:5004' }));
+    app.use(proxy(['/api', '/api/surveys'], { target: 'http://localhost:5004' }));
 }

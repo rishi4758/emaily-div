@@ -29,6 +29,7 @@
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "run-all": "^1.0.1",
+    "sendgrid": "^5.2.3",
     "stripe": "^8.2.0"
   }
 }

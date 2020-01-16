@@ -22,19 +22,16 @@ proxy:true
 
 
 },
-(Token,refreshToken,profile,done)=>{
-login.findOne({googleId:profile.id}).then((userExist)=>{
+ async (Token,refreshToken,profile,done)=>{
+     const userExist=await login.findOne({googleId:profile.id})
+     
     if(userExist){
         console.log("user exist");
-        done(null,userExist);
-    }else{
-        new login({
-            googleId:profile.id,
-            name:profile.displayName
-            }).save().then(use=> done(null,use))
+        return done(null,userExist);
     }
-})
-
-
-})
+     const use=  await new login({ googleId:profile.id, name:profile.displayName }).save()
+            done(null,use);
+        
+}
+)
 );

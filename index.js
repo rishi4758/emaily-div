@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyparser=require('body-parser')
 const key=require("./config/keys")
 const cookieSession=require("cookie-session");
 const passport=require("passport");
 const app=express();
 
-
+app.use(bodyparser.json());
 app.use(
     cookieSession({
         maxAge:30 *24* 60 *60* 1000,
@@ -16,11 +17,24 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session())
+require("./router/billingroutes.js")(app)
 require("./router/oauth.js")(app)
+if(process.env.NODE_ENV ==='production'){
+// express serveve up production assets
+// like main.js or main.css
+app.use(express.static('client/build'));
+
+// express will serve index.html
+// if it does not find the route
+const path=require("path");
+app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+})
+}
 mongoose.connect(key.mongoURI, {useNewUrlParser: true}).then(
     console.log("connected database")
 );
 require("./models/user");
 require("./service/passport.js");
-const port=process.env.PORT || 5003;
+const port=process.env.PORT || 5004;
 app.listen(port)

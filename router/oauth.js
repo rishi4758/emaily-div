@@ -5,10 +5,10 @@ passport.authenticate('google',{
     scope:['profile','email']
 }))
 
-app.get('/',(req,res)=>{
-    res.send({ name:"tobeeeeeeema"})
-}
-)
+// app.get('/',(req,res)=>{
+//     res.send({ name:"tobeeeeeeema"})
+// }
+// )
 
 app.get('/auth/google/callback',
 passport.authenticate('google'),

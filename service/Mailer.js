@@ -30,7 +30,7 @@ addClickTracking(){
 addRecipients(){
     const personalize=new helper.Personalization();
     this.recipients.forEach(recipients=>{
-        personalize.addTo(recipient);
+        personalize.addTo(recipients);
     });
     this.addPersonalization(personalize);
 }

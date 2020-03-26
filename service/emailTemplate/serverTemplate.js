@@ -1,3 +1,4 @@
+keys=require('../../config/keys')
 module.exports=(survey)=>{
 
     return `
@@ -7,10 +8,10 @@ module.exports=(survey)=>{
     <h3> i like your input</h3>
     <p> please answer the following question</p>
     <div>
-    <a href="http://localhost:3000">Yes</a>
+    <a href="${keys.redirectDomain}">Yes</a>
     </div>
     <div>
-    <a href="http://localhost:3000">No</a>
+    <a href="${keys.redirectDomain}">No</a>
     </div>
     </div>
     </body>

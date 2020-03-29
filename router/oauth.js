@@ -4,22 +4,19 @@ app.get('/auth/google/',
 passport.authenticate('google',{
     scope:['profile','email']
 }))
-
-// app.get('/',(req,res)=>{
-//     res.send({ name:"tobeeeeeeema"})
-// }
-// )
-
 app.get('/auth/google/callback',
 passport.authenticate('google'),
-(req,res)=>res.redirect('/surveys')
+(req,res)=>res.redirect('http://localhost:3000/surveys')
 );
-app.get("/api/user",(req,res)=>{
-    res.send(req.user)
-})
 app.get("/api/logout",(req,res)=>{
     req.logout();
     res.redirect('/')
+})
+
+app.get("/api/user",(req,res)=>{
+    console.log(" bhai user haoooouser exist");
+  
+    res.send(req.user)
 })
 
 }

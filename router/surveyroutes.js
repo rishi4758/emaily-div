@@ -1,12 +1,14 @@
 const mongoose=require('mongoose')
+const passport=require("passport");
 const reqlogin=require("../middlewares/reqlogin")
 const reqcredits=require("../middlewares/reqcredits")
 const Survey=mongoose.model("surveys");
 const Mailer =require('../service/Mailer')
 const surveyTemplate=require('../service/emailTemplate/serverTemplate')
 module.exports=(app)=>{
-app.post('/api/surveys',reqlogin,reqcredits, async (req,res)=>{
-
+app.post('/api/surveys', async (req,res)=>{
+console.log(req.body)
+console.log(req.user)
 const {title ,subject , body ,recipients }=req.body;
 const survey = new Survey({
 title,

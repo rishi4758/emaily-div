@@ -5,8 +5,10 @@ const key=require("./config/keys")
 const cookieSession=require("cookie-session");
 const passport=require("passport");
 const app=express();
+const session=require('express-session')
+const cors=require('cors')
 
-app.use(bodyparser.json());
+
 app.use(
     cookieSession({
         maxAge:30 *24* 60 *60* 1000,
@@ -17,6 +19,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session())
+app.use(cors());
+app.use(bodyparser.json());
 require("./models/user");
 require("./models/survey.js");
 require("./service/passport.js");

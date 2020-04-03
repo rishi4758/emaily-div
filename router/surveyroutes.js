@@ -6,10 +6,9 @@ const Survey=mongoose.model("surveys");
 const Mailer =require('../service/Mailer')
 const surveyTemplate=require('../service/emailTemplate/serverTemplate')
 module.exports=(app)=>{
-app.post('/api/surveys', async (req,res)=>{
-console.log(req.body)
-console.log(req.user)
-const {title ,subject , body ,recipients }=req.body;
+app.post('/api/rishav',(req,res)=>{
+    console.log(req.user)
+    const {title ,subject , body ,recipients }=req.body;
 const survey = new Survey({
 title,
 subject,
@@ -19,15 +18,13 @@ _user:req.user.id,
 dateSent:Date.now()
 
 })
-
-
 // great place to send email
 const mailer=new Mailer(survey,surveyTemplate(survey));
 try{
- await mailer.send();
-await survey.save();
+  mailer.send();
+ survey.save();
 req.user.credits -=1;
-const user=await req.user.save();
+const user= req.user.save();
 res.send(user)
 }
 catch(err){
@@ -37,5 +34,13 @@ catch(err){
 })
 
 
+app.get("/api/surveys", async (req,res)=>{
+
+const survey=await  Survey.find({_user:req.user.id})
+.select({recipients:false});
+res.send(survey);
+
+
+})
 
 }

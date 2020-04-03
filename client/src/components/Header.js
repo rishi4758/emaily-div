@@ -30,6 +30,7 @@ render(){
          Logo</Link>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         {this.rendercontent()}
+        {console.log(this.props.auth)}
         
       </ul>
     </div>

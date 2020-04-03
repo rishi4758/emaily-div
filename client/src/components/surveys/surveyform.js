@@ -31,7 +31,7 @@ renderfields(){
     }
 }
 
-function validate(values){
+function validate(values,history){
 const error={};
 
 error.recipients=validEmails(values.recipients || '');

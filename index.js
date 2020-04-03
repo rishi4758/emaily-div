@@ -22,8 +22,9 @@ app.use(passport.session())
 app.use(cors());
 app.use(bodyparser.json());
 require("./models/user");
-require("./models/survey.js");
 require("./service/passport.js");
+require("./models/survey.js");
+
 
 
 require("./router/billingroutes.js")(app)

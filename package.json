@@ -13,7 +13,8 @@
     "client": " cd client && npm run start",
     "dev": "concurrently  \"npm run server\" \"npm run client\" ",
     "install": "",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client "
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client ",
+    "webhook":"lt  -p 5000 -s rishavrapta"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "localtunnel": "^2.0.0",
     "mongoose": "^5.8.1",
     "nodemon": "^2.0.2",
     "npm-run-parallel": "^0.6.0",

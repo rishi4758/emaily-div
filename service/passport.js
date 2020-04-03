@@ -3,8 +3,8 @@ const mongoose=require("mongoose");
 const strategy=require("passport-google-oauth20").Strategy;
 const key=require('../config/keys.js')
 const login=mongoose.model('login');
-passport.serializeUser((use,done)=>{
-    done(null,use.id);
+passport.serializeUser((login,done)=>{
+    done(null,login.id);
 })
 
 passport.deserializeUser((id,done)=>{
@@ -26,7 +26,7 @@ proxy:true
      const userExist=await login.findOne({googleId:profile.id})
      
     if(userExist){
-        console.log("user exist");
+        
         return done(null,userExist);
     }
      const use=  await new login({ googleId:profile.id, name:profile.displayName }).save()

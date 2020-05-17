@@ -15,7 +15,6 @@ app.get("/api/logout",(req,res)=>{
 
 app.get("/api/user",(req,res)=>{
     console.log(" bhai user haoooo   user exist");
-  
     res.send(req.user)
 })
 

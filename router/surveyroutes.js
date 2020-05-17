@@ -38,7 +38,7 @@ app.get("/api/surveys", async (req,res)=>{
 
 const survey=await  Survey.find({_user:req.user.id})
 .select({recipients:false});
-res.send(survey);
+res.send(survey.email);
 
 
 })

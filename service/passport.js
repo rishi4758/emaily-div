@@ -3,7 +3,9 @@ const mongoose=require("mongoose");
 const strategy=require("passport-google-oauth20").Strategy;
 const key=require('../config/keys.js')
 const login=mongoose.model('login');
-passport.serializeUser((login,done)=>{
+
+    
+passport.use(passport.serializeUser((login,done)=>{
     done(null,login.id);
 })
 
@@ -12,8 +14,6 @@ passport.deserializeUser((id,done)=>{
         done(null,user)
     })
 })
-    
-passport.use(
     new strategy(
 {clientID: key.googleclientID,
 clientSecret:key.googleclientSecret,

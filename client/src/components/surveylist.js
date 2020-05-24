@@ -7,7 +7,8 @@ componentDidMount(){
 }
 
  renderlist=()=>{
- return this.props.survey.reverse().map(survey=>{
+    const ar=Object.values(this.props.survey)
+ return ar.map(survey=>{
     return (
     <div class="card blue-grey darken-1" key={survey._id}>
         <div class="card-content white-text">

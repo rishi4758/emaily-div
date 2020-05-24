@@ -5,7 +5,7 @@ const key=require('../config/keys.js')
 const login=mongoose.model('login');
 
     
-passport.use(passport.serializeUser((login,done)=>{
+passport.serializeUser((login,done)=>{
     done(null,login.id);
 })
 
@@ -14,13 +14,12 @@ passport.deserializeUser((id,done)=>{
         done(null,user)
     })
 })
-    new strategy(
+ 
+const google=new strategy(
 {clientID: key.googleclientID,
 clientSecret:key.googleclientSecret,
 callbackURL:'/auth/google/callback',
 proxy:true
-
-
 },
  async (Token,refreshToken,profile,done)=>{
      const userExist=await login.findOne({googleId:profile.id})
@@ -33,5 +32,5 @@ proxy:true
             done(null,use);
         
 }
-)
 );
+passport.use( google )

@@ -7,7 +7,7 @@ const passport = require("passport");
 const app = express();
 const session = require("express-session");
 const cors = require("cors");
-console.log(key);
+
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,

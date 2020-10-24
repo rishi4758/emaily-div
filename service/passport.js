@@ -18,7 +18,7 @@ const google = new strategy(
   {
     clientID: key.googleclientID,
     clientSecret: key.googleclientSecret,
-    callbackURL: "https://protected-cove-33966.herokuapp.com",
+    callbackURL: "https://protected-cove-33966.herokuapp.com/callback/auth",
     proxy: true,
   },
   async (Token, refreshToken, profile, done) => {

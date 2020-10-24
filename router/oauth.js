@@ -1,4 +1,6 @@
 const passport = require("passport");
+// const devUrl = "http://localhost:3000";
+const prodUrl = "https://protected-cove-33966.herokuapp.com";
 module.exports = (app) => {
   app.get(
     "/auth/google/",
@@ -8,7 +10,7 @@ module.exports = (app) => {
   );
   app.get("/callback/auth", passport.authenticate("google"), (req, res) => {
     console.log("auth works!!");
-    res.redirect("http://localhost:3001/surveys");
+    res.redirect(`${prodUrl}/surveys`);
   });
   app.get("/api/logout", (req, res) => {
     req.logout();
